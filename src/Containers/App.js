@@ -23,8 +23,12 @@ function App(){
   eachRobot.name.toLowerCase().includes(searchField.toLowerCase()));
 
 return(
+        <>
 !robots.length ? <h1>Loading</h1> :
-        (
+        ( 
+  !filteredRobot.length ? 
+  <h1> Seems there's no robot with the name you typed,
+  Pls try another name </h1> :
   <div className='tc'>
   <Heading/>
   <SearchBar handleChange={handleChange}/>
@@ -34,7 +38,9 @@ return(
   </Scroll>
   </Errorboundary>
   </div>
-  )
+       )
+       </>
+
 )
 
 }

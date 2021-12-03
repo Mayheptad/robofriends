@@ -5,6 +5,7 @@ import Scroll from '../Components/Scroll';
 import CardList from '../Components/CardList';
 import './App.css';
 import Errorboundary from '../Components/Errorboundary';
+import NoMoreRobot from '../Components/NoMoreRobot';
 
 function App(){
 
@@ -22,27 +23,21 @@ function App(){
  const filteredRobot = robots.filter( eachRobot => 
   eachRobot.name.toLowerCase().includes(searchField.toLowerCase()));
 
-return(
-        <>
+return(      
 !robots.length ? <h1>Loading</h1> :
         ( 
-  !filteredRobot.length ? 
-  <h1> Seems there's no robot with the name you typed,
-  Pls try another name </h1> :
   <div className='tc'>
   <Heading/>
   <SearchBar handleChange={handleChange}/>
   <Errorboundary>
   <Scroll>
-  <CardList robots={filteredRobot}/>
+ {!filteredRobot.length ? <NoMoreRobot/> : <CardList robots={filteredRobot}/>}
   </Scroll>
   </Errorboundary>
   </div>
        )
-       </>
-
 )
 
-}
+ }
 
 export default App;
